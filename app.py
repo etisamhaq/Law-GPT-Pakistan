@@ -6,10 +6,11 @@ from langchain.vectorstores import Chroma
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains import RetrievalQA
 from langchain_google_genai import ChatGoogleGenerativeAI
-from config import GOOGLE_API_KEY
 
-# Set API key
-os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
+# Set API key from Streamlit secrets
+os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+
+# os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 
 def extract_text_from_pdf(pdf_path):
     with open(pdf_path, 'rb') as file:
